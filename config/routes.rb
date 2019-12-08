@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     member do
       put "like" => "posts#like"
       put "unlike" => "posts#unlike"
+      # put "delete" => "posts#destroy"
     end
   end
 

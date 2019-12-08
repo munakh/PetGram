@@ -40,7 +40,7 @@ Rails.application.configure do
   config.active_record.migration_error = :page_load
 
   # Store files locally.
-  config.active_storage.service = :local
+  config.active_storage.service = :google_dev
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large

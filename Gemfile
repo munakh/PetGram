@@ -55,6 +55,7 @@ end
 
 gem 'activestorage'
 gem 'acts_as_votable'
+gem "google-cloud-storage", "~> 1.8", require: false
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

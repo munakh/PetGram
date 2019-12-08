@@ -19,7 +19,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to :back
+    redirect_to posts_url
   end
 
   def like
@@ -55,8 +55,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:image)
-    params.require(:post).permit(:caption)
+    params.require(:post).permit(:image, :caption)
   end
 
   # def find_post
