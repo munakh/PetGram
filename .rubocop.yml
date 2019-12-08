@@ -1,6 +1,8 @@
-inherit_gem:
-  rubocop-rails:
-    - config/rails.yml
+# inherit_gem:
+#   rubocop-rails:
+#     - config/rails.yml
+
+require: rubocop-rails
 
 Style/StringLiterals:
   Enabled: false
@@ -8,5 +10,5 @@ Style/StringLiterals:
 Style/StringLiteralsInInterpolation:
   Enabled: false
 
-Style/IndentationConsistency:
+Layout/IndentationConsistency:
   EnforcedStyle: normal

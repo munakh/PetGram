@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -20,6 +20,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'devise'
+gem 'omniauth-github'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'factory_bot_rails'
@@ -51,6 +52,8 @@ group :development, :test do
   gem 'simplecov-console'
   gem 'travis'
 end
+
+gem 'activestorage'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.

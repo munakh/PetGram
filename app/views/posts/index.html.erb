@@ -1,5 +1,68 @@
 <html>
-  <head>
-    <h1> Instagram Feed </h1>
-  </head>
+
+<head>
+  <h1> Instagram Feed </h1>
+</head>
+
+<body>
+
+  <div class = "nav">
+    <nav class="navbar navbar-default navbar-light">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-top" id="navdropdown">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <%= link_to "Home", root_url, class: "navbar-brand" %>
+          <%= link_to "Posts", "/posts", class: "navbar-brand" %>
+          <%= link_to "New Post", "/posts/new", class: "navbar-brand" %>
+
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-top">
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+            <li><%= link_to('Log out', destroy_user_session_path, method: :delete) %></li>
+            <% else %>
+            <li><%= link_to 'Sign up', new_user_registration_path %></li>
+            <li><%= link_to 'Log in', user_session_path %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <h2>Posts</h2>
+
+  <div class = "post">
+    <%= link_to new_post_path do %>
+    New Post
+    <% end %>
+    <div class = "image_container">
+    <% @posts.each do |post| %>
+    <% if post.image.attached? %>
+    <%= image_tag(post.image, style:"width:250px;height:250px;") %>
+    <%= post.caption %> <br>
+    <%= post.created_at.strftime("Posted at: %H:%M on %A %d %b, %Y") %>
+
+    <% if post.user_id == current_user.id %>
+    <div class = "Post-buttons">
+      <%= link_to('Delete', "/posts/#{post.id}", url_options = {method: "delete"}) %>
+      <br>
+      <br>
+      <br>
+    </div>
+    <% end %>
+    <% end %>
+    <% end %>
+    </div>
+
+<br>
+<%= link_to('Logout', destroy_user_session_path, method: :delete) %>
+
 </html>

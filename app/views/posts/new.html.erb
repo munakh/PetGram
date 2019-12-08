@@ -1,9 +1,38 @@
 <h1> New Post </h1>
 
-<%= form_with scope: :post, local: true do |form| %>
+<div class = "nav">
+  <nav class="navbar navbar-default navbar-light">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-top" id="navdropdown">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <%= link_to "Home", root_url, class: "navbar-brand" %>
+        <%= link_to "Posts", "/posts", class: "navbar-brand" %>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbar-top">
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+          <li><%= link_to('Sign out', destroy_user_session_path, method: :delete) %></li>
+          <% else %>
+          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li><%= link_to 'Sign in', user_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<br>
+<br>
+<br>
+
+<%= form_for @post do |form| %>
   <p>
-    <%= form.label :title %><br>
-    <%= form.text_field :title %>
+   <%= form.label :caption %><br>
+   <%= form.text_field :caption %>
   </p>
 
   <p>
