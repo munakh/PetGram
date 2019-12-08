@@ -5,7 +5,13 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations', confirmations: 'users/confirmations', sessions: 'users/sessions', mailer: 'users/mailer', passwords: 'users/passwords', shared: 'users/shared', unlocks: 'users/unlocks', omniauth_callbacks: 'users/omniauth_callbacks' }
 
 
-  resources :posts
+  resources :posts do
+    member do
+      put "like" => "posts#like"
+      put "unlike" => "posts#unlike"
+    end
+  end
+
   resources :users
 
   root to: 'welcome#index'
